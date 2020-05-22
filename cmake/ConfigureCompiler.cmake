@@ -266,7 +266,8 @@ else()
     -Wno-deprecated
     -fvisibility=hidden
     -Wreturn-type
-    -fPIC)
+    -fPIC
+    -Woverloaded-virtual)
   if (GPERFTOOLS_FOUND AND GCC)
     add_compile_options(
       -fno-builtin-malloc
