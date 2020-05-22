@@ -263,6 +263,11 @@ else()
   endif()
   add_compile_options(-Wno-error=format
     -Wunused-variable
+    -Wduplicated-cond
+    -Wduplicated-branches
+    -Wlogical-op
+    -Wnull-dereference
+    -Wuseless-cast
     -Wno-deprecated
     -fvisibility=hidden
     -Wreturn-type
