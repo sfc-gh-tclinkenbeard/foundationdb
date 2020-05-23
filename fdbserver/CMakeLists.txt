@@ -155,6 +155,7 @@ set(FDBSERVER_SRCS
   workloads/LocalRatekeeper.actor.cpp
   workloads/LogMetrics.actor.cpp
   workloads/LowLatency.actor.cpp
+  workloads/LowLatencyCommit.actor.cpp
   workloads/MachineAttrition.actor.cpp
   workloads/Mako.actor.cpp
   workloads/MemoryKeyValueStore.cpp

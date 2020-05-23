@@ -1,0 +1,9 @@
+testTitle=LowLatencyCommit
+    testName=LowLatencyCommit
+    testDuration=60.0
+    delayBetweenTransactions=0.0
+    keySize=16
+    valueSize=16
+    writesPerTransaction=1
+    getReadVersionBeforeCommit=false
+    debugTransactionRate=0.01
