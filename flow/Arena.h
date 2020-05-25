@@ -218,6 +218,7 @@ public:
 
 	template <class U>
 	Optional(const U& t) : valid(true) { new (&value) T(t); }
+	Optional(T &&t) : valid(true) { new (&value) T(std::move(t)); }
 
 	/* This conversion constructor was nice, but combined with the prior constructor it means that Optional<int> can be converted to Optional<Optional<int>> in the wrong way
 	(a non-present Optional<int> converts to a non-present Optional<Optional<int>>).

@@ -91,7 +91,7 @@ T sorted(T range) {
 }
 
 template <class T>
-ErrorOr<T> errorOr( T t ) {
+ErrorOr<T> errorOr( const T &t ) {
 	return ErrorOr<T>(t);
 }
 

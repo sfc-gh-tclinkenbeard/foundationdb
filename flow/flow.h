@@ -142,6 +142,7 @@ public:
 
 	template <class U>
 	ErrorOr(const U& t) : error() { new (&value) T(t); }
+	ErrorOr(T &&t) : error() { new (&value) T(std::move(t)); }
 
 	ErrorOr(Arena& a, const ErrorOr<T>& o) : error(o.error) {
 		if (present()) new (&value) T(a, o.get());
