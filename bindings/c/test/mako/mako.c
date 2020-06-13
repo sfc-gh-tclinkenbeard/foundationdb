@@ -1034,45 +1034,60 @@ int parse_transaction(mako_args_t* args, char* optarg) {
 
 	op = 0;
 	while (*ptr) {
-		if (strncmp(ptr, "grv", 3) == 0) {
+		char opStr[4];
+		{
+			// Add padding to opStr in order to suppress
+			// overly aggressive -Warray-bounds warning
+			if (strlen(ptr) > 3) {
+				fprintf(debugme, "Error: Invalid transaction spec: %s\n", ptr);
+				error = 1;
+				break;
+			}
+			memcpy(opStr, ptr, strlen(ptr));
+			for (int i = strlen(ptr); i < 3; ++i) {
+				opStr[i] = ' ';
+			}
+			opStr[3] = '\0';
+		}
+		if (strncmp(opStr, "grv", 3) == 0) {
 			op = OP_GETREADVERSION;
 			ptr += 3;
-		} else if (strncmp(ptr, "gr", 2) == 0) {
+		} else if (strncmp(opStr, "gr ", 3) == 0) {
 			op = OP_GETRANGE;
 			rangeop = 1;
 			ptr += 2;
-		} else if (strncmp(ptr, "g", 1) == 0) {
+		} else if (strncmp(opStr, "g  ", 3) == 0) {
 			op = OP_GET;
 			ptr++;
-		} else if (strncmp(ptr, "sgr", 3) == 0) {
+		} else if (strncmp(opStr, "sgr", 3) == 0) {
 			op = OP_SGETRANGE;
 			rangeop = 1;
 			ptr += 3;
-		} else if (strncmp(ptr, "sg", 2) == 0) {
+		} else if (strncmp(opStr, "sg ", 3) == 0) {
 			op = OP_SGET;
 			ptr += 2;
-		} else if (strncmp(ptr, "u", 1) == 0) {
+		} else if (strncmp(opStr, "u  ", 3) == 0) {
 			op = OP_UPDATE;
 			ptr++;
-		} else if (strncmp(ptr, "ir", 2) == 0) {
+		} else if (strncmp(opStr, "ir ", 3) == 0) {
 			op = OP_INSERTRANGE;
 			rangeop = 1;
 			ptr += 2;
-		} else if (strncmp(ptr, "i", 1) == 0) {
+		} else if (strncmp(opStr, "i  ", 3) == 0) {
 			op = OP_INSERT;
 			ptr++;
-		} else if (strncmp(ptr, "cr", 2) == 0) {
+		} else if (strncmp(opStr, "cr ", 3) == 0) {
 			op = OP_CLEARRANGE;
 			rangeop = 1;
 			ptr += 2;
-		} else if (strncmp(ptr, "c", 1) == 0) {
+		} else if (strncmp(opStr, "c  ", 3) == 0) {
 			op = OP_CLEAR;
 			ptr++;
-		} else if (strncmp(ptr, "scr", 3) == 0) {
+		} else if (strncmp(opStr, "scr", 3) == 0) {
 			op = OP_SETCLEARRANGE;
 			rangeop = 1;
 			ptr += 3;
-		} else if (strncmp(ptr, "sc", 2) == 0) {
+		} else if (strncmp(opStr, "sc ", 3) == 0) {
 			op = OP_SETCLEAR;
 			ptr += 2;
 		} else {
