@@ -125,7 +125,7 @@ storage_server_write_queue_size     Storage server performance (storage queue).
 storage_server_write_bandwidth_mvcc Storage server MVCC memory.
 storage_server_readable_behind      Storage server version falling behind.
 log_server_mvcc_write_bandwidth     Log server MVCC memory.
-log_server_write_queue              Storage server performance (log queue).
+log_server_write_queue              Log server performance (log queue).
 min_free_space                      Running out of space (approaching 100MB limit).
 min_free_space_ratio                Running out of space (approaching 5% limit).
 log_server_min_free_space           Log server running out of space (approaching 100MB limit).

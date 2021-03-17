@@ -64,14 +64,12 @@ const char* limitReasonName[] = { "workload",
 	                              "storage_server_list_fetch_failed" };
 static_assert(sizeof(limitReasonName) / sizeof(limitReasonName[0]) == limitReason_t_end, "limitReasonDesc table size");
 
-// NOTE: This has a corresponding table in Script.cs (see RatekeeperReason graph)
-// IF UPDATING THIS ARRAY, UPDATE SCRIPT.CS!
 const char* limitReasonDesc[] = { "Workload or read performance.",
 	                              "Storage server performance (storage queue).",
 	                              "Storage server MVCC memory.",
 	                              "Storage server version falling behind.",
 	                              "Log server MVCC memory.",
-	                              "Storage server performance (log queue).",
+	                              "Log server performance (log queue).",
 	                              "Storage server running out of space (approaching 100MB limit).",
 	                              "Storage server running out of space (approaching 5% limit).",
 	                              "Log server running out of space (approaching 100MB limit).",
