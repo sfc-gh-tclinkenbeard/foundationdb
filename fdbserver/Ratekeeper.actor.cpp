@@ -1340,7 +1340,7 @@ void updateRate(RatekeeperData* self, RatekeeperLimits* limits) {
 		std::string name = "RkUpdate" + limits->context;
 		TraceEvent(name.c_str(), self->id)
 		    .detail("TPSLimit", limits->tpsLimit)
-		    .detail("Reason", limitReason)
+		    .detail("Reason", limitReasonName[limitReason])
 		    .detail("ReasonServerID", reasonID == UID() ? std::string() : Traceable<UID>::toString(reasonID))
 		    .detail("ReleasedTPS", self->smoothReleasedTransactions.smoothRate())
 		    .detail("ReleasedBatchTPS", self->smoothBatchReleasedTransactions.smoothRate())
